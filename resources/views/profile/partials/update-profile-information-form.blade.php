@@ -47,6 +47,11 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="role" :value="__('Role')" />
+            <x-text-input :disabled id="role" type="text" class="mt-1 block w-full bg-gray-100" :value="strtoupper($user->getRoleNames()->join('|'))" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

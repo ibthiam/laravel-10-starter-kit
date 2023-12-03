@@ -38,6 +38,25 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        <!-- Customized Dropdown Links -->
+                        @can('user_management_access')
+                        <x-dropdown-link :href="route('user.index')">
+                            {{ __('Users') }}
+                        </x-dropdown-link>
+                        @endcan
+
+                        @can('role_management_access')
+                        <x-dropdown-link :href="route('role.index')">
+                            {{ __('Roles') }}
+                        </x-dropdown-link>
+                        @endcan
+
+                        @can('permission_management_access')
+                        <x-dropdown-link :href="route('permission.index')">
+                            {{ __('Permissions') }}
+                        </x-dropdown-link>
+                        @endcan
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
