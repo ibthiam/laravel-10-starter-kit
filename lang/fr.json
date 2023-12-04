@@ -150,5 +150,20 @@
     "Users": "Utilisateurs",
     "Roles": "Rôles",
     "Role": "Rôle",
-    "Permissions": "Permissions"
+    "Permissions": "Permissions",
+    "Manage all users of the platform according to your role and your permissions.": "Gérez tous les utilisateurs de la plateforme selon votre rôle et vos autorisations.",
+    "List of Users": "Liste des utilisateurs",
+    "New User": "Nouvel utilisateur",
+    "Created At": "Créé le",
+    "Updated At": "Modifié le",
+    "Manage all platform roles according to your accreditations.": "Gérez tous les rôles de la plateforme en fonction de vos accréditations.",
+    "List of Roles": "Liste des rôles",
+    "New Role": "Nouveau Rôle",
+    "Permissions Counter": "Compteur d'autorisations",
+    "No Roles!": "Aucun rôle!",
+    "No Users!": "Aucun utilisateur!",
+    "No Permissions!": "Aucune permission!",
+    "Manage all platform permissions according to your accreditations.": "Gérez tous les permissions de la plateforme en fonction de vos accréditations.",
+    "List of Permissions": "Liste des permissions",
+    "New Permission": "Nouvelle Permission"
 }
