@@ -28,38 +28,129 @@ Laravel has the most extensive and thorough [documentation](https://laravel.com/
 You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+ 
+## Project creation process
 
-## Laravel Sponsors
+Here is the abbreviated creation process of this project as well as the description of the integrated components, their installations and configurations.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Create a new Laravel project named `laravel-10-10-starter-kit`
 
-### Premium Partners
+```bash
+composer create-project --prefer-dist laravel/laravel laravel-10-10-starter-kit
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+For more details, check out [Laravel Installation](https://laravel.com/docs/10.x/installation#creating-a-laravel-project) docs.
 
-## Contributing
+### Laravel-Breeze
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Laravel Breeze was used for its comprehensive authentication system with pre-built views, providing a solid foundation and pre-built features. Here are the commands that facilitated its integration into the project.
 
-## Code of Conduct
+```bash
+# install Laravel Breeze (minimalist authentication) as a development dependency.
+composer require laravel/breeze --dev
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# install Laravel Breeze with Blade views for minimalist authentication scaffolding.
+php artisan breeze:install blade
 
-## Security Vulnerabilities
+# run Laravel migrations to create database tables.
+php artisan migrate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# install Node.js dependencies specified in the project's package.json file.
+npm install
+```
+
+For a detailed explanation of how it works, see the [Laravel-Breeze](https://laravel.com/docs/10.x/starter-kits#breeze-and-blade) docs.
+
+### Laravel-Permission Install & Setup
+
+`spatie/laravel-permission` is a package developed by Spatie for the Laravel framework, facilitating the management of roles and permissions in applications. This package provides an elegant solution for establishing a robust authorization system in Laravel projects.
+
+Key features of `spatie/laravel-permission` include the ability to create roles, assign permissions to roles, and check access to features based on roles or permissions. It also offers seamless integration with Laravel's user model.
+
+```bash
+# install Spatie Laravel Permission package.
+composer require spatie/laravel-permission
+
+# publish the package configuration.
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+# clear optimization files.
+php artisan optimize:clear
+
+# run Laravel migrations to set up permission-related database tables.
+php artisan migrate
+```
+
+For more details, see the [spatie/laravel-permission](https://spatie.be/docs/laravel-permission/v6/introduction) docs.
+
+### Laravel-Lang Installation & Setup
+
+```bash
+# publish language files.
+php artisan lang:publish
+
+# install Laravel Lang package for common language files (dev).
+composer require --dev laravel-lang/common
+
+# add French (fr) language to the project.
+php artisan lang:add fr
+
+# add Spanish (es) language to the project.
+php artisan lang:add es
+
+# update language files.
+php artisan lang:update
+```
+
+For more details, check out [Laravel-Lang](https://laravel-lang.com/installation.html) docs.
+
+### Customizing Laravel Pagination views
+
+```bash
+# Publish Laravel pagination views and assets.
+php artisan vendor:publish --tag=laravel-pagination
+```
+
+## Installation & Set Up
+
+```bash
+# clone this repo
+git clone https://github.com/ibthiam/laravel-10-10-starter-kit.git
+
+# install PHP dependencies using Composer.
+composer install
+
+# install Node.js dependencies using npm.
+npm install
+
+# run Laravel migrations and seed the database.
+php artisan migrate --seed
+# or
+php artisan migrate
+php artisan db:seed
+```
+
+### Run Servers
+
+```
+# Start the Laravel development server.
+php artisan serve
+
+# Compile assets for development using Laravel Mix.
+npm run dev
+```
+
+### Components & Env versions
+
+| Component                     | Version   |                                                            |
+| :---                          | :---      |
+| PHP                           | 8.1.10    |
+| laravel                       | 10.10     |
+| composer                      | 2.6.5     |
+| nodeJS                        | 20.9.0    |
+| `laravel/breeze`              | 1.26      |
+| `spatie/laravel-permission`   | 6.1       |
+| `laravel-lang/common`         | 5.3       |
 
 ## License
 
