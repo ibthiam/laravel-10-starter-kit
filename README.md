@@ -142,7 +142,7 @@ npm run dev
 
 ### Components & Env versions
 
-| Component                     | Version   |                                                            |
+| Component                     | Version                                                               |
 | :---                          | :---      |
 | PHP                           | 8.1.10    |
 | laravel                       | 10.10     |
