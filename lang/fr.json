@@ -165,5 +165,10 @@
     "No Permissions!": "Aucune permission!",
     "Manage all platform permissions according to your accreditations.": "Gérez tous les permissions de la plateforme en fonction de vos accréditations.",
     "List of Permissions": "Liste des permissions",
-    "New Permission": "Nouvelle Permission"
+    "New Permission": "Nouvelle Permission",
+
+    "Language": "Langue",
+    "French": "Français",
+    "English": "Anglais",
+    "Spanish": "Espagnol"
 }

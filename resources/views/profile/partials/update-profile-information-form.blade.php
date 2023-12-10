@@ -49,7 +49,15 @@
 
         <div>
             <x-input-label for="role" :value="__('Role')" />
-            <x-text-input :disabled id="role" type="text" class="mt-1 block w-full bg-gray-100" :value="strtoupper($user->getRoleNames()->join('|'))" />
+            <x-text-input :disabled id="role" type="text" class="mt-1 block w-full bg-gray-100 text-sm  font-medium" :value="strtoupper($user->getRoleNames()->join('|'))" />
+        </div>
+
+        <div class="mb-1">
+            <x-input-label for="locale" :value="__('Language')" />
+            <div class="mt-2">
+                <x-radio-input id="locale" name="locale" :options="['fr' => __('French'), 'en' => __('English'), 'es' => __('Spanish')]" :checked="old('locale', $user->locale)"/>
+                <x-input-error class="mt-2" :messages="$errors->get('locale')" />
+            </div>
         </div>
 
         <div class="flex items-center gap-4">
