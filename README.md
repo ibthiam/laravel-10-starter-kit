@@ -117,32 +117,34 @@ php artisan vendor:publish --tag=laravel-pagination
 # clone this repo
 git clone https://github.com/ibthiam/laravel-10-10-starter-kit.git
 
+# copy .env.example to .env if .env does not exist.
+php -r "file_exists('.env') || copy('.env.example', '.env');"
+
 # install PHP dependencies using Composer.
 composer install
 
 # install Node.js dependencies using npm.
 npm install
 
+# create a database and update the database setup in the .env file.
+
 # run Laravel migrations and seed the database.
 php artisan migrate --seed
-# or
-php artisan migrate
-php artisan db:seed
 ```
 
 ### Run Servers
 
-```
-# Start the Laravel development server.
+```bash
+# start the Laravel development server.
 php artisan serve
 
-# Compile assets for development using Laravel Mix.
+# compile assets for development using Laravel Mix.
 npm run dev
 ```
 
 ### Components & Env versions
 
-| Component                     | Version                                                               |
+| Component                     | Version   |
 | :---                          | :---      |
 | PHP                           | 8.1.10    |
 | laravel                       | 10.10     |
