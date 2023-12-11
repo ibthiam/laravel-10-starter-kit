@@ -115,10 +115,13 @@ php artisan vendor:publish --tag=laravel-pagination
 
 ```bash
 # clone this repo
-git clone https://github.com/ibthiam/laravel-10-10-starter-kit.git
+git clone https://github.com/ibthiam/laravel-10-starter-kit.git
 
 # copy .env.example to .env if .env does not exist.
 php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+# Generate a new application key for Laravel.
+php artisan key:generate
 
 # install PHP dependencies using Composer.
 composer install
