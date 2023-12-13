@@ -1,0 +1,1 @@
+<input {!! $attributes->merge(['accept' => '.xlsx, .xls', 'type' => 'file', 'name' => 'file', 'class' => 'block w-full p-2 text-base text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none']) !!}>

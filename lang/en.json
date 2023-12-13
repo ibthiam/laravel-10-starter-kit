@@ -170,5 +170,12 @@
     "Language": "Language",
     "French": "French",
     "English": "English",
-    "Spanish": "Spanish"
+    "Spanish": "Spanish",
+
+    "Importing a batch of users": "Importing a batch of users",
+    "You can import a batch of users using the User Import Model: ": "You can import a batch of users using the User Import Model: ",
+    "Download": "Download",
+    "This file doesn't exist": "This file doesn't exist",
+    "Users imported successfully!": "Users imported successfully!",
+    "The required format is : ": "The required format is : "
 }

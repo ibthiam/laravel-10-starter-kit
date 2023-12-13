@@ -36,6 +36,61 @@
 
                                         {{ __('New User') }}
                                     </x-normal-icon-button>
+
+                                    <x-icon-button
+                                        x-data=""
+                                        x-on:click.prevent="$dispatch('open-modal', 'import-user')"
+                                        title="{{ __('Import Users') }}"
+                                        class="ml-2"
+                                        >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                            <path d="M11.47 1.72a.75.75 0 011.06 0l3 3a.75.75 0 01-1.06 1.06l-1.72-1.72V7.5h-1.5V4.06L9.53 5.78a.75.75 0 01-1.06-1.06l3-3zM11.25 7.5V15a.75.75 0 001.5 0V7.5h3.75a3 3 0 013 3v9a3 3 0 01-3 3h-9a3 3 0 01-3-3v-9a3 3 0 013-3h3.75z" />
+                                        </svg>
+                                    </x-icon-button>
+                                
+                                    <x-modal name="import-user" :show="$errors->userImportation->isNotEmpty()" focusable>
+                                        <form action="{{ route('user.import') }}" method="POST" class="ml-2 p-6" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('POST')
+
+                                            <h2 class="text-lg font-medium text-gray-900">
+                                                {{ __("Importing a batch of users") }}
+                                            </h2>
+                                            
+                                            <p class="mt-2 text-sm text-gray-600">
+                                                {{ __("You can import a batch of users using the User Import Model : ") }}
+                                                <a href="{{ route('user.import.model') }}" class="no-underline hover:underline font-medium text-blue-600 underline-offset-4">{{ __('Download') }}</a>.
+                                            </p>
+                                            <p class="text-sm text-gray-600">
+                                                {{ __("The required format is : ") }} <code class="text-red-800 italic">name|email|password|role</code>
+                                            </p>
+
+                                            <div class="mt-6">
+                                                <x-input-label for="file" value="{{ __('Import File') }}" class="sr-only" />
+                                
+                                                <x-file-import-input 
+                                                    aria-describedby="file_input_help" 
+                                                    id="file_input"
+                                                    placeholder="{{ __('File') }}"
+                                                    />
+
+                                                <p class="mt-1 text-xs text-red-500 flex justify-end italic" id="file_input_help">{{ __('* XLSX or XLS (MAX. 10 KO).') }}</p>
+                                
+                                                <x-input-error :messages="$errors->userImportation->get('file')" class="mt-2" />
+
+                                            </div>
+
+                                            <div class="mt-6 flex justify-end">
+                                                <x-secondary-button x-on:click="$dispatch('close')">
+                                                    {{ __('Cancel') }}
+                                                </x-secondary-button>
+                                
+                                                <x-danger-button class="ms-3">
+                                                    {{ __('Import File') }}
+                                                </x-danger-button>
+                                            </div>
+                                        </form>
+                                    </x-modal>
                                 </div>
                             @endcan
                         </div>
@@ -82,7 +137,7 @@
                                             {{ strtolower(\Illuminate\Support\Str::limit($user->email, 25)) }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ strtoupper($user->getRoleNames()[0]) }}
+                                            {{ count($user->roles) ? strtoupper($user->getRoleNames()[0]) : '--' }}
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ strtoupper($user->created_at) }}

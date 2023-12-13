@@ -85,6 +85,8 @@ For more details, see the [spatie/laravel-permission](https://spatie.be/docs/lar
 
 ### Laravel-Lang Installation & Setup
 
+Laravel-lang (or Laravel Language Files) is a community project that aims to provide language files for the Laravel framework in various languages. These files allow the translation of messages, labels, errors, and other textual elements of Laravel into the desired language.
+
 ```bash
 # publish language files.
 php artisan lang:publish
@@ -111,6 +113,26 @@ For more details, check out [Laravel-Lang](https://laravel-lang.com/installation
 php artisan vendor:publish --tag=laravel-pagination
 ```
 
+### Laravel-Excel Installation & Setup
+
+Laravel Excel is an open-source library for Laravel that simplifies the import and export of Excel files.
+
+```bash
+# install Maatwebsite Excel package as a dependency.
+composer require maatwebsite/excel
+
+# add the service provider to your `config/app.php` file within the `providers` array
+Maatwebsite\Excel\ExcelServiceProvider::class,
+
+# publish the configuration file for Maatwebsite Excel package.
+php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
+
+# generate a new Excel import class named UsersImport, associated with the User model.
+php artisan make:import UsersImport --model=User
+```
+
+For more details, check out [Laravel-Excel](https://docs.laravel-excel.com/3.1/getting-started/) docs.
+
 ## Installation & Set Up
 
 ```bash
@@ -126,7 +148,7 @@ npm install
 # copy .env.example to .env if .env does not exist.
 php -r "file_exists('.env') || copy('.env.example', '.env');"
 
-# Generate a new application key for Laravel.
+# generate a new application key for Laravel.
 php artisan key:generate
 
 # create a database and update the database setup in the .env file.

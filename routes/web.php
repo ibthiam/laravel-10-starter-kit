@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['permission:user_management_access'])->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('user.index');
+        Route::post('/users/import', [UserController::class, 'import'])->name('user.import');
+        Route::get('/users/model', [UserController::class, 'downloadModel'])->name('user.import.model');
     });
 
     Route::middleware(['permission:role_management_access'])->group(function () {

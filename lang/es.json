@@ -170,5 +170,12 @@
     "Language": "Idioma",
     "French": "Francés",
     "English": "Inglés",
-    "Spanish": "Español"
+    "Spanish": "Español",
+
+    "Importing a batch of users": "Importación de un lote de usuarios",
+    "You can import a batch of users using the User Import Model: ": "Puede importar un lote de usuarios utilizando el modelo de importación de usuarios: ",
+    "Download": "Descargar",
+    "This file doesn't exist": "Este archivo no existe",
+    "Users imported successfully!": "Usuarios importados exitosamente",
+    "The required format is : ": "El formato requerido es: "
 }
