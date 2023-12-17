@@ -177,5 +177,21 @@
     "Download": "Descargar",
     "This file doesn't exist": "Este archivo no existe",
     "Users imported successfully!": "Usuarios importados exitosamente",
-    "The required format is : ": "El formato requerido es: "
+    "User deleted successfully!": "Usuario eliminado exitosamente",
+    "The required format is : ": "El formato requerido es: ",
+
+    "Back to :": "Volver a :",
+    "Add User": "Agregar usuario",
+    "Edit User": "Editar usuario",
+    "Show User": "Mostrar usuario",
+    "Delete User": "Eliminar usuario",
+    "User's Information": "Información del usuario",
+    "Enter the user's information in the dedicated fields.": "Ingrese la información del usuario en los campos correspondientes.",
+    "Once this user is deleted, all resources and data that are dependent on it will be permanently deleted.": "Una vez que este usuario se elimine, todos los recursos y datos que dependan de él se eliminarán de forma permanente.",
+    "Delete this user": "Eliminar este usuario",
+    "Update": "Actualizar",
+    "An empty list means you don't have any roles yet. You have to create some.": "Una lista vacía significa que aún no tienes roles. Debes crear algunos.",
+    "View user information in dedicated fields.": "Ver la información del usuario en los campos correspondientes.",
+    "ALL": "TODOS"
+
 }

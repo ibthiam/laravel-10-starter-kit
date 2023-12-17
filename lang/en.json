@@ -177,5 +177,21 @@
     "Download": "Download",
     "This file doesn't exist": "This file doesn't exist",
     "Users imported successfully!": "Users imported successfully!",
-    "The required format is : ": "The required format is : "
+    "User deleted successfully!": "User deleted successfully!",
+    "The required format is : ": "The required format is : ",
+
+    "Back to :": "Back to :",
+    "Add User": "Add User",
+    "Edit User": "Edit User",
+    "Show User": "Show User",
+    "Delete User": "Delete User",
+    "User's Information": "User's Information",
+    "Enter the user's information in the dedicated fields.": "Enter the user's information in the dedicated fields.",
+    "Once this user is deleted, all resources and data that are dependent on it will be permanently deleted.": "Once this user is deleted, all resources and data that are dependent on it will be permanently deleted.",
+    "Delete this user": "Delete this user",
+    "Update": "Update",
+    "An empty list means you don't have any roles yet. You have to create some.": "An empty list means you don't have any roles yet. You have to create some.",
+    "View user information in dedicated fields.": "View user information in dedicated fields.",
+    "ALL": "ALL"
+    
 }

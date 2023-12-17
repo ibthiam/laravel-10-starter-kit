@@ -66,8 +66,8 @@
                                                 <label for="checkbox-table-search-{{ $role->id }}" class="sr-only">checkbox</label>
                                             </div>
                                         </td>
-                                        <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap" title="{{ strtoupper($role->name) }}">
-                                            <a href="#" class="text-blue-600 hover:underline">{{ strtoupper(\Illuminate\Support\Str::limit($role->name, 25) ) }}</a>
+                                        <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap" title="{{ strtolower($role->name) }}">
+                                            <a href="#" class="text-blue-600 hover:underline">{{ strtolower(\Illuminate\Support\Str::limit($role->name, 25) ) }}</a>
                                         </th>
                                         <td class="px-6 py-4">
                                             {{ $role->name != 'super_admin' ? count($role->permissions) : __('ALL') }}

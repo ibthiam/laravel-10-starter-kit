@@ -7,12 +7,19 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-{{--            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">--}}
-{{--                <div class="p-6 text-gray-900">--}}
-{{--                    {{ __("You're logged in!") }}--}}
-{{--                </div>--}}
-{{--            </div>--}}
 
+            <x-message-error :messages="'success'" :background="'green'" class="bg-green-200 border-green-300">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 me-4">
+                    <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
+                </svg>
+            </x-message-error>
+
+            <x-message-error :messages="'error'" :background="'red'" class="bg-red-200 border-red-300">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 me-4">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clip-rule="evenodd" />
+                </svg>
+            </x-message-error>
+            
             @if($users->count())
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
@@ -29,7 +36,7 @@
 
                             @can('user_create')
                                 <div class="sm:col-span-2 px-6 flex items-center justify-end">
-                                    <x-normal-icon-button href="#">
+                                    <x-normal-icon-button href="{{ route('user.create') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 me-2">
                                             <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
                                         </svg>
@@ -122,55 +129,56 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach($users as $user)
-                                    <tr class="bg-white border-y hover:bg-gray-50">
-                                        <td class="w-4 p-4">
-                                            <div class="flex items-center">
-                                                <input disabled id="checkbox-table-search-{{ $user->id }}" type="checkbox" value="{{ $user->id }}" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
-                                                <label for="checkbox-table-search-{{ $user->id }}" class="sr-only">checkbox</label>
-                                            </div>
-                                        </td>
-                                        <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap" title="{{ ucfirst($user->name) }}">
-                                            <a href="#" class="text-blue-600 hover:underline">{{ ucfirst(\Illuminate\Support\Str::limit($user->name, 25) ) }}</a>
-                                        </th>
-                                        <td class="px-6 py-4" title="{{ strtolower($user->email) }}">
-                                            {{ strtolower(\Illuminate\Support\Str::limit($user->email, 25)) }}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            {{ count($user->roles) ? strtoupper($user->getRoleNames()[0]) : '--' }}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            {{ strtoupper($user->created_at) }}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            {{ strtoupper($user->udpated_at ?? ' -- ' ) }}
-                                        </td>
+                                    @foreach($users as $user)
+                                        <tr class="bg-white border-y hover:bg-gray-50">
+                                            <td class="w-4 p-4">
+                                                <div class="flex items-center">
+                                                    <input disabled id="checkbox-table-search-{{ $user->id }}" type="checkbox" value="{{ $user->id }}" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                                                    <label for="checkbox-table-search-{{ $user->id }}" class="sr-only">checkbox</label>
+                                                </div>
+                                            </td>
+                                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap" title="{{ strtoupper($user->name) }}">
+                                                <a href="{{ route('user.show', ['user' => $user->id]) }}" class="text-blue-600 hover:underline">{{ strtoupper(\Illuminate\Support\Str::limit($user->name, 25) ) }}</a>
+                                            </th>
+                                            <td class="px-6 py-4" title="{{ strtolower($user->email) }}">
+                                                {{ strtolower(\Illuminate\Support\Str::limit($user->email, 25)) }}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                {{ count($user->roles) ? strtoupper($user->getRoleNames()[0]) : '--' }}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                {{ strtoupper($user->created_at) }}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                {{ strtoupper($user->udpated_at ?? ' -- ' ) }}
+                                            </td>
 
-                                        <td class="px-6 py-4">
-                                            @can('user_edit')
-                                                <a href="#" class="text-gray-500 hover:text-white bg-gray-200 hover:bg-green-500 focus:ring-2 focus:ring-offset-1 focus:outline-none focus:ring-green-700 font-medium rounded-lg text-sm p-1.5 text-center inline-flex items-center me-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                                        <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
-                                                    </svg>
-                                                </a>
-                                            @endcan
-
-                                            @can('user_delete')
-                                                <form action="#" method="POST" class="inline-flex items-center">
-                                                    @csrf
-                                                    {{--@method('DELETE')--}}
-                                                    @method('GET')
-
-                                                    <button type="submit" class="text-red-500 hover:text-white bg-gray-200 hover:bg-red-500 focus:ring-2 focus:ring-offset-1 focus:outline-none focus:ring-red-700 font-medium rounded-lg text-sm p-1.5 text-center">
+                                            <td class="px-6 py-4">
+                                                @can('user_edit')
+                                                    <a href="{{ route('user.edit', ['user' => $user->id]) }}" class="text-gray-500 hover:text-white bg-gray-200 hover:bg-green-500 focus:ring-2 focus:ring-offset-1 focus:outline-none focus:ring-green-700 font-medium rounded-lg text-sm p-1.5 text-center inline-flex items-center me-2">
                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                                            <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
+                                                            <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
                                                         </svg>
-                                                    </button>
-                                                </form>
-                                            @endcan
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                                    </a>
+                                                @endcan
+
+                                                @can('user_delete')
+                                                    <form action="{{ route('user.destroy', ['user' => $user->id]) }}" method="POST" class="inline-flex items-center">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        {{-- @method('GET') --}}
+
+                                                        {{-- <button onclick="event.preventDefault(); window.confirm({{ __('message de base') }}) ? console.log(this) : console.log(false);" type="submit" class="text-red-500 hover:text-white bg-gray-200 hover:bg-red-500 focus:ring-2 focus:ring-offset-1 focus:outline-none focus:ring-red-700 font-medium rounded-lg text-sm p-1.5 text-center"> --}}
+                                                        <button type="submit" class="text-red-500 hover:text-white bg-gray-200 hover:bg-red-500 focus:ring-2 focus:ring-offset-1 focus:outline-none focus:ring-red-700 font-medium rounded-lg text-sm p-1.5 text-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                                                <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
+                                                            </svg>
+                                                        </button>
+                                                    </form>
+                                                @endcan
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
