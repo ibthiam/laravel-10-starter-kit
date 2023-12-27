@@ -147,10 +147,14 @@
                                                 {{ count($user->roles) ? strtoupper($user->getRoleNames()[0]) : '--' }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                {{ strtoupper($user->created_at) }}
+                                                @isset($user->created_at)
+                                                    @datetime($user->created_at)
+                                                @endisset
                                             </td>
                                             <td class="px-6 py-4">
-                                                {{ strtoupper($user->udpated_at ?? ' -- ' ) }}
+                                                @isset($user->udpated_at)
+                                                    @datetime($user->udpated_at)
+                                                @endisset
                                             </td>
 
                                             <td class="px-6 py-4">

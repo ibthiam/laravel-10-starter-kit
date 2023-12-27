@@ -73,10 +73,14 @@
                                             {{ $permission->getRoleNames()->count() ? strtoupper(\Illuminate\Support\Str::limit($permission->getRoleNames()->join(' | '), 25)) : ' - ' }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ strtoupper($permission->created_at) }}
+                                            @isset($permission->created_at)
+                                                @datetime($permission->created_at)
+                                            @endisset
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ strtoupper($permission->updated_at) }}
+                                            @isset($permission->updated_at)
+                                                @datetime($permission->updated_at)
+                                            @endisset
                                         </td>
 
                                         <td class="px-6 py-4">

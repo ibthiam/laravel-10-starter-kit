@@ -73,10 +73,14 @@
                                             {{ $role->name != 'super_admin' ? count($role->permissions) : __('ALL') }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ strtoupper($role->created_at) }}
+                                            @isset($role->created_at)
+                                                @datetime($role->created_at)
+                                            @endisset
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ strtoupper($role->updated_at) }}
+                                            @isset($role->udpated_at)
+                                                @datetime($role->udpated_at)
+                                            @endisset
                                         </td>
 
                                         <td class="px-6 py-4">

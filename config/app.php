@@ -172,6 +172,7 @@ return [
         // ↓↓↓ Added by me@thiam
         Spatie\Permission\PermissionServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        App\Providers\DateTimeFormatProvider::class,
     ])->toArray(),
 
     /*
