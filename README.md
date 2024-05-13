@@ -165,6 +165,9 @@ php artisan serve
 
 # compile assets for development using Laravel Mix.
 npm run dev
+
+# refer to the seeder for working with test users.
+# ./database/seeders/UserSeeder.php
 ```
 
 ### Components & Env versions
