@@ -10,7 +10,7 @@
 # Laravel 10 Starter
 
 <p align="center">
-  <img height="300" src="public/starter-banner.png" alt="laravel-10 starter banner">
+  <img height="500" src="public/starter-banner.png" alt="laravel-10 starter banner">
 </p>
 
 ## About Laravel
